@@ -15,6 +15,8 @@ def dividir(num_uno, num_dos):
         return num_uno/num_dos
 
 def factorial(n):
+    if n < 0:
+        raise ValueError
     if n == 0 or n == 1:
         return 1
     else:
@@ -29,7 +31,16 @@ def calcular_operaciones (num_uno,num_dos,diccionario_operaciones):
         diccionario_operaciones["division"]= dividir(num_uno,num_dos)
     except ZeroDivisionError:
         diccionario_operaciones["division"] = "No se puede dividir por 0"
-    diccionario_operaciones["factorial uno"] = factorial(num_uno)
-    diccionario_operaciones["factorial dos"] = factorial(num_dos)
+    try:
+        diccionario_operaciones["factorial uno"] = factorial(num_uno)
+        
+    except ValueError:
+        diccionario_operaciones["factorial uno"] = "No se puede hacer factorial de un numero negativo"
+    try:
+        diccionario_operaciones["factorial dos"] = factorial(num_uno)
+        
+    except ValueError:
+        diccionario_operaciones["factorial dos"] = "No se puede hacer factorial de un numero negativo"
+    
     
     
